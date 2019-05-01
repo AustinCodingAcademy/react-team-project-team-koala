@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 
 class App extends Component {
   state = {
@@ -7,29 +7,29 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    this.fetchClients();
+    this.fetchClients()
   }
 
-  fetchClients = async () => {
-    const response = await fetch('/api/clients');
-    const clients = await response.json();
-    this.setState({ clients: clients });
+  fetchClients = async() => {
+    const response = await fetch('/api/clients')
+    const clients = await response.json()
+    this.setState({ clients: clients })
   }
 
-  addClient = async (e) => {
-    e.preventDefault(); // Don't refresh the browser
+  addClient = async(e) => {
+    e.preventDefault() // Don't refresh the browser
     await fetch('/api/clients', {
-      method: "POST",
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        "name": e.target.elements["name"].value,
-        "address" : e.target.elements["address"].value,
-        "phoneNumber":e.target.elements["phoneNumber"].value
+        'name': e.target.elements['name'].value,
+        'address': e.target.elements['address'].value,
+        'phoneNumber': e.target.elements['phoneNumber'].value
       })
-    });
-    this.fetchClients();
+    })
+    this.fetchClients()
   }
 
   render() {
@@ -51,8 +51,8 @@ class App extends Component {
           {this.state.clients.map(client => <li key={client.id}>{client.name}</li>)}
         </ul>
       </main>
-    );
+    )
   }
 }
 
-export default App;
+export default App
