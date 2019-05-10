@@ -37,10 +37,9 @@ public class AppointmentRestController {
 
 	@PreAuthorize("hasAuthority('LIST_CLIENTS')")
 	@GetMapping
-	public String listAppointments(Model model) {
-		List<AppointmentClientPet> apptClientPetList = appointmentService.getApptClientPetList();
-		model.addAttribute("apptClientPetList", apptClientPetList);
-		return "appointments/listAppointments";
+
+	public List<Appointment> listAppointments(){
+		return appointmentService.getAppointments();
 	}
 	
 	 @PreAuthorize("hasAuthority('GET_CLIENT')")
