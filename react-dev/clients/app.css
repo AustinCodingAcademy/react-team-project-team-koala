@@ -1,0 +1,26 @@
+/*
+.navbar,.topbar{
+  display:flex;
+  list-style-type: none;
+  margin:0;
+  padding:0;
+}
+.navbar{  width:100vw;
+    justify-content: space-between;
+    background: lightgray;
+}
+.topbar{
+  width:100vw;
+    justify-content: space-between;
+}
+header{
+  display:flex;
+  flex-direction: column;
+}
+main{
+
+  border:1px solid grey;
+}
+#app{
+  height:100vh;
+} */

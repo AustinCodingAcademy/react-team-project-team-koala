@@ -1,0 +1,16 @@
+{
+  "name": "webpack-demo",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "webpack-dev-server --open --history-api-fallback",
+    "build": "webpack"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "pivotal-ui": "^18.0.0",
+    "react-router-dom": "^4.2.2"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.2"
+  }
+}
