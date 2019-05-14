@@ -1,0 +1,26 @@
+
+insert into clients (id, name, phone_number, address) values (1, 'Wolfgang McAvey', '502-706-0400', '42 Golf Course Court');
+insert into clients (id, name, phone_number, address) values (2, 'Lanni Richmont', '226-130-4778', '29570 Artisan Plaza');
+insert into clients (id, name, phone_number, address) values (3, 'Benjamin Heaford', '942-515-0524', '7220 Norway Maple Center');
+insert into clients (id, name, phone_number, address) values (4, 'Danie Sybry', '433-816-8524', '4159 Prairieview Parkway');
+insert into clients (id, name, phone_number, address) values (5, 'Hermia Licas', '862-738-7182', '17 Holmberg Place');
+insert into clients (id, name, phone_number, address) values (6, 'Adel Latchmore', '585-602-2618', '1 Crest Line Center');
+insert into clients (id, name, phone_number, address) values (7, 'Zebulen Harle', '669-998-1081', '9226 Elmside Center');
+insert into clients (id, name, phone_number, address) values (8, 'Avrom Melwall', '208-117-0998', '8696 Summit Pass');
+insert into clients (id, name, phone_number, address) values (9, 'Merrick Odby', '340-815-9289', '8716 Emmet Way');
+insert into clients (id, name, phone_number, address) values (10, 'Luce Divill', '688-905-9470', '8420 Lillian Alley');
+insert into clients (id, name, phone_number, address) values (11, 'Perle Skegg', '688-218-7487', '1 Charing Cross Terrace');
+insert into clients (id, name, phone_number, address) values (12, 'Ann-marie Garvin', '334-299-2490', '1 Milwaukee Plaza');
+insert into clients (id, name, phone_number, address) values (13, 'Grove Comini', '722-874-9940', '52 Cardinal Junction');
+insert into clients (id, name, phone_number, address) values (14, 'Cybill Varfalameev', '646-950-4791', '5084 Emmet Alley');
+insert into clients (id, name, phone_number, address) values (15, 'Immanuel Frenchum', '325-201-5232', '44 International Trail');
+insert into clients (id, name, phone_number, address) values (16, 'Taryn Reeman', '923-730-4135', '752 Debs Way');
+insert into clients (id, name, phone_number, address) values (17, 'Saleem Dixey', '662-581-5416', '69027 Novick Alley');
+insert into clients (id, name, phone_number, address) values (18, 'Bendix Caple', '823-676-0769', '39570 Ramsey Plaza');
+insert into clients (id, name, phone_number, address) values (19, 'Sibby Mulbery', '264-172-2447', '6 Lakewood Gardens Junction');
+insert into clients (id, name, phone_number, address) values (20, 'Vivyan Hallyburton', '531-971-7618', '341 Mariners Cove Drive');
+insert into clients (id, name, phone_number, address) values (21, 'Charil Sage', '101-588-5774', '9 Raven Trail');
+insert into clients (id, name, phone_number, address) values (22, 'Spike Delagua', '721-448-7063', '5161 Towne Road');
+insert into clients (id, name, phone_number, address) values (23, 'Konstantin Eaglen', '694-630-0271', '3 Acker Plaza');
+insert into clients (id, name, phone_number, address) values (24, 'Hayyim Najera', '719-603-3595', '3 Center Drive');
+insert into clients (id, name, phone_number, address) values (25, 'Roberta Cray', '628-174-1181', '3 Tennyson Parkway');

@@ -12,9 +12,15 @@ create table pets (
 	altered boolean,
 	client_id integer,
 	FOREIGN KEY (client_id) REFERENCES clients(id)
-
 );
 
+CREATE TABLE appointments(
+    id integer PRIMARY KEY AUTOINCREMENT,
+    pet_id integer REFERENCES pets(id),
+    date DATE,
+		reason varchar(255),
+		FOREIGN KEY (pet_id) REFERENCES pets(id)
+);
 
 create table users (
 	id integer PRIMARY KEY AUTOINCREMENT,
