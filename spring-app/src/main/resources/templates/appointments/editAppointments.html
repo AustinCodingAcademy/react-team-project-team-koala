@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-steps@1.1.0/demo/css/jquery.steps.min.css">
+<header th:replace="fragments/includes/1-top-template.html"></header>
+
+<div class="container-fluid">
+
+<!-- Main Content --------------------------------------->
+<!-- TODO: add calendar stuff here -->
+
+  <!-- ADD/EDIT CLIENT --------->
+
+  <form class="needs-validation" id="theForm" action="#" data-th-action="@{/appointments}" data-th-object="${command}" method="post">
+    <input type="hidden" data-th-field="*{id}" />
+    <div data-th-if="${saved}" class="message-box-info">
+      Saved
+    </div>
+
+    <input type="hidden" data-th-field="*{id}" />
+     <h4> Appointment Details </h4>
+    <div class="form-row">
+    	<div class="form-group col-md-4">
+    	    <input type="hidden" data-th-field="*{client_id}" />
+    		<label class="small mb-0" for="name" >Client Name</label>
+    		<input name="client_name" data-th-value="${client_name}" type="text" class="form-control" readonly>
+    	</div>
+    	
+    	<div class="form-group col-md-4">
+    	    <input type="hidden" data-th-field="*{pet_id}" />
+    		<label class="small mb-0" for="pet_id">Pet Name</label>
+    		<input name="pet_name" data-th-value="${pet_name}" type="text" class="form-control" readonly>
+    	</div>	
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-4 was-validated">
+        <label class="small mb-0" for="name">Appointment Date</label>
+        <input id="appt_date" name="appt_date" placeholder="Appointment Date (MM/DD/YYYY)" type="text" class="form-control js-format-date" data-th-field="*{appt_date}" required>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label class="small mb-0" for="appt_time">Appointment Time</label>
+        <input id="appt_time" name="appt_time" placeholder="Appointment Time (HH:MM)" type="text" class="form-control js-format-time" data-th-field="*{appt_time}" required>
+      </div>
+    
+      <div class="form-group col-md-4">
+        <label class="small mb-0" for="appt_type">Appointment Reason</label>
+        <input id="appt_type" name="appt_type" placeholder="Reason for Appointment" type="text" class="form-control text-capitalize" data-th-field="*{appt_type}" required>
+      </div>
+
+    </div>
+  </form>
+   
+  <div class="row">
+  	<button type="submit" form="theForm" class="btn btn-primary btn-sm custom-buttons ml-3 mr-1" value="Save">Save</button>
+    <a class="btn btn-primary btn-sm custom-buttons mr-1" data-th-href="@{/appointments}">Cancel</a>
+    <a class="btn btn-primary btn-sm custom-buttons js-confirm-delete" data-toggle="confirmation" targetdata-th-if="${command.id != null}" data-th-href="@{/appointments/{c}/delete(c=${command?.id})}">Delete</a>
+  </div>    
+
+<!-- end ------------------------------------------------->        
+</div>
+
+<footer th:replace="fragments/includes/2-bottom-template.html"></footer>
+<!-- add additional scripts below -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.js"></script>
+
+<script>
+  $("#example-basic").steps({
+    headerTag: "h3",
+    bodyTag: "section",
+    transitionEffect: "slideLeft",
+    autoFocus: true
+});
+</script>
+

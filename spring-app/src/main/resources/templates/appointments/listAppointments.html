@@ -1,0 +1,36 @@
+<header th:replace="fragments/includes/1-top-template.html"></header>
+<div class="container mt-3">
+
+  <!-- Main Content --------------------------------------->
+
+  <h3 class="mb-3">Appointments</h3>
+  <div class="table-responsive" data-th-if="${apptClientPetList.size() > 0}">
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th>Appointment ID </th>
+          <th>Client Name</th>
+          <th>Pet Name</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Reason for Visit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-th-each="apptClientPet : ${apptClientPetList}">
+          		<td><a data-th-href="@{/appointments/{id}(id=${apptClientPet.appointment.id})}" data-th-text="${apptClientPet.appointment.id}">...</a></td>
+				<td data-th-text="${apptClientPet.client_name}">...</td>
+				<td data-th-text="${apptClientPet.pet_name}">...</td>
+				<td data-th-text="${apptClientPet.appointment.appt_date}">...</td>
+				<td data-th-text="${apptClientPet.appointment.appt_time}">...</td>
+				<td data-th-text="${apptClientPet.appointment.appt_type}">...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<!-- end ------------------------------------------------->
+</div>
+
+<footer th:replace="fragments/includes/2-bottom-template.html"></footer>
+<!-- add additional scripts below -->

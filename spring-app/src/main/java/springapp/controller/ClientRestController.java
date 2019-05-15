@@ -31,10 +31,6 @@ import springapp.service.ClientService;
 @RestController
 @RequestMapping("/api/clients") //notice that this path is set at the class level.
 public class ClientRestController {
-
-    private Logger logger = LoggerFactory.getLogger(ClientRestController.class);
-
-    // Inject in a ClientService claass
 	@Autowired
 	ClientService clientService;
 

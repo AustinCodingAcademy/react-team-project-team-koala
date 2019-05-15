@@ -35,8 +35,9 @@ public class AppointmentService {
 		return appointmentDao.getApptClientPet(id);
 	}
 	
-	public void deleteAppointment(String id) {
+	public Appointment deleteAppointment(String id) {
 		appointmentDao.delete(Integer.parseInt(id));
+		return appointmentDao.get(Integer.parseInt(id));
 	}
 
 	public Appointment saveAppointment(AppointmentCommand toSave) {
