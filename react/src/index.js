@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+// import '../bootstrap/dist/css/bootstrap.css'
 import './index.css'
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import App from './App'
@@ -7,6 +8,7 @@ import Pet from './views/pets';
 import Client from './views/clients';
 import Appointment from './views/appointments';
 import * as serviceWorker from './serviceWorker'
+import 'bootstrap/dist/css/bootstrap.css';
 
 const routing = (
   <Router>

@@ -18,9 +18,32 @@ class pets extends React.Component {
 
     render() {
         return (
-            <ul>
-                {this.state.pets.map(pet => <li key={pet.id}>{pet.name}</li>)}
-            </ul>    
+            <main>
+                <form onSubmit={this.addPet}>
+                    <label> Name
+                        <input name="name" />
+                    </label>
+                    <label> Client ID
+                        <input name="clientId" />
+                    </label>
+                    <label> Gender
+                        <select>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </label>
+                    <label> Altered
+                        <select>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </label>
+                    <input type="submit" />
+                </form>
+                <ul>
+                    {this.state.pets.map(pet => <li key={pet.id}>{pet.name}</li>)}
+                </ul>    
+            </main>
         );
     }
 }
