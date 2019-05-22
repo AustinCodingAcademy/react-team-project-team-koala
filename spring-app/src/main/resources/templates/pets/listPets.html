@@ -1,37 +1,33 @@
-<!DOCTYPE HTML>
-<html>
-<header th:replace="fragments/head.html :: head" >
-</header>
-<body>
-	<div id="container" class="content pure-g" >
-		<header th:replace="fragments/header.html :: header" >
-		</header>
-		<div id="mainBody" class="pure-u pure-g column">
-			<div id="content" class="pure-u-1">
-				<div class="pad">
-				    <div data-th-if="${deleted}" class="message-box-info">
-						Deleted successfully
-				    </div>
-					<table class="fullWidth pure-table pure-table-horizontal">
-						<thead>
-							<tr>
-								<th>Id</th>
-								<th>Name</th>
-								<th>Gender</th>
-							</tr>
-						</thead>
-						<tbody>	
-							<tr data-th-each="pet : ${pets}">
-								<td> <a data-th-href="@{/pets/{id}(id=${pet.id})}" data-th-text="${pet.id}">...</a></td>
-								<td data-th-text="${pet.name}">...</td>
-								<td data-th-text="${pet.gender}">...</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-    </div>
-</body>
-</html>
+<div class="container mt-3">
 
+<!-- Main Content --------------------------------------->
+
+          <h3 class="mb-3">Pets</h3>
+          <div data-th-if="${deleted}" class="message-box-info">
+            Deleted successfully
+          </div>
+          <div class="table-responsive mb-4">
+              <table class="table table-sm">
+			      <thead>
+			        <tr>
+			          <th>Pet ID </th>
+			          <th>Name</th>
+			          <th>Gender</th>
+			          <th>Altered Status</th>
+			          <th>Client</th>
+			        </tr>
+			      </thead>
+			      <tbody>
+			        <tr data-th-each="pet : ${pets}">
+			          		<td data-th-text="${pet.id}">...</td>
+							<td data-th-text="${pet.name}">...</td>
+							<td data-th-text="${pet.gender}">...</td>
+							<td data-th-text="${pet.altered}">...</td>
+							<td data-th-text="${pet.clientId}">...</td>
+			        </tr>
+			      </tbody>
+			   </table>
+          </div>
+          
+<!-- end ------------------------------------------------->        
+</div>

@@ -99,5 +99,8 @@ public class ClientDao {
 		jdbcTemplate.update("DELETE FROM clients WHERE id = ?",
 				new Object[] {id});
 		
+		jdbcTemplate.update("DELETE FROM appointments WHERE client_id = ?",
+				new Object[] {id});
+		
 	}
 }
