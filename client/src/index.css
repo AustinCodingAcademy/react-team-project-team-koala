@@ -1,0 +1,67 @@
+/* custon css for Styler component */
+.hover-light,
+.hover-dark {
+  color: inherit;
+  transition: ease 1200ms color;
+}
+
+.hover-light:hover {
+  color: #fafafa !important;
+}
+.hover-dark:hover {
+  color: #222 !important;
+}
+/* form group and validation */
+.form-validation {
+  color: #c92c3c;
+  font-size: 0.8em;
+  width: 100%;
+}
+
+.form-validation:before {
+  font-family: ft;
+  content: '\e80a';
+  margin-right: 3px;
+}
+.form-group label {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  color: #3755BE;
+}
+
+.form-group label:hover {
+  color: #444;
+}
+
+/* bootstrap */
+
+.bg-primary {
+  background-color: #3755BE !important;
+}
+.bg-primary-2{
+  background:#FF8E88;
+}
+.bg-primary-alt{
+  background:#f3f5fb
+}
+.bg-primary-3{
+  background-color:#1B1F3B;
+}
+body{background:#375ABB}
+
+.text-primary {
+  color: #3755BE !important;
+}
+.text-primary-2 {
+  color: #FF8E88 !important;
+}
+
+td:hover{
+  background:#f3f5fb!important;
+
+}
+
+.navbar{padding-left:0!important;
+padding-right:0!important;}
+
