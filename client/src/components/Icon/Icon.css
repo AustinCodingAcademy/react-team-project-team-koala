@@ -1,0 +1,121 @@
+@font-face {
+  font-family: 'ft';
+  src: url('../../assets/font/ft.eot?27830919');
+  src: url('../../assets/font/ft.eot?27830919#iefix') format('embedded-opentype'),
+    url('../../assets/font/ft.woff2?27830919') format('woff2'), url('../../assets/font/ft.woff?27830919') format('woff'),
+    url('../../assets/font/ft.ttf?27830919') format('truetype'),
+    url('../../assets/font/ft.svg?27830919#ft') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+}
+[class^='icon-']:before,
+[class*=' icon-']:before {
+  font-family: 'ft';
+
+  font-style: normal;
+  font-weight: normal;
+  display: inline-block;
+  text-decoration: inherit;
+  padding: 0.35rem;
+  margin: 0;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  line-height: 1 !important;
+}
+[class^='icon-']:before .small {
+  font-size: 1em;
+}
+[class^='icon-']:before .large {
+  font-size: 2em;
+}
+
+.lh-0 {
+  /* use for icons */
+  line-height: 0 !important;
+}
+
+.icon-login:before {
+  content: '\e800';
+}
+.icon-logout:before {
+  content: '\e801';
+}
+.icon-calendar:before {
+  content: '\e802';
+}
+.icon-plus-circled:before {
+  content: '\e803';
+}
+.icon-minus-circled:before {
+  content: '\e804';
+}
+.icon-trash:before {
+  content: '\e805';
+}
+.icon-arrows-cw:before {
+  content: '\e806';
+}
+.icon-mail:before {
+  content: '\e807';
+}
+.icon-info-circled:before {
+  content: '\e808';
+}
+.icon-search:before {
+  content: '\e809';
+}
+.icon-attention-circled:before {
+  content: '\e80a';
+}
+.icon-ok:before {
+  content: '\e80b';
+}
+.icon-cancel:before {
+  content: '\e80c';
+}
+.icon-plus:before {
+  content: '\e80d';
+}
+.icon-attach:before {
+  content: '\e80e';
+}
+.icon-cog:before {
+  content: '\e80f';
+}
+.icon-link:before {
+  content: '\e810';
+}
+.icon-pencil:before {
+  content: '\e811';
+}
+.icon-male:before {
+  content: '\e812';
+}
+.icon-female:before {
+  content: '\e813';
+}
+.icon-attention:before {
+  content: '\e814';
+}
+.icon-help-circled:before {
+  content: '\e815';
+}
+.icon-github-circled-alt2:before {
+  content: '\f056';
+}
+.icon-table:before {
+  content: '\f0ce';
+}
+.icon-user-circle-o:before {
+  content: '\f2be';
+}
+.icon-id-card-o:before {
+  content: '\f2c3';
+}
