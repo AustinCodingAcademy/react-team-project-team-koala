@@ -43,9 +43,9 @@ class AppointmentComponent extends Component {
   validate(values) {
     const errors = {}
     errors.petId = values.petId ? '' : 'Cannot be blank'
-    errors.date = values.date ? '' : 'Cannot be blank'
-    errors.type = values.type ? '' : 'Cannot be blank'
-    errors.reason = values.reason ? '' : 'Cannot be blank'
+    // errors.date = values.date ? '' : 'Cannot be blank'
+    // errors.type = values.type ? '' : 'Cannot be blank'
+    // errors.reason = values.reason ? '' : 'Cannot be blank'
     return errors
   }
 
@@ -72,7 +72,7 @@ class AppointmentComponent extends Component {
     const { id, petId, date, type, reason } = this.state
 
     return (
-      <div className="container">
+      <div>
         <Formik
           initialValues={{
             id,
@@ -89,43 +89,39 @@ class AppointmentComponent extends Component {
         >
           {props => (
             <Form>
-              {/* https://reactjs.org/docs/forms.html */}
-              <br />
               {/* hide input when id is -1 */
               id > 0 && (
-                <fieldset className="form-group">
+                <fieldset>
                   <label>Id</label>
-                  <Field className="form-control" type="text" name="id" disabled />
+                  <Field type="text" name="id" disabled />
                 </fieldset>
               ) /****************************/}
-              <fieldset className="form-group">
+              <fieldset>
                 <label>Pet ID</label>
-                <Field className="form-control" type="text" name="petId" />
-                <ErrorMessage name="petId" component="div" className="form-validation" />
+                <Field type="text" name="petId" />
+                <ErrorMessage name="petId" component="div" />
               </fieldset>
-              <fieldset className="form-group">
+              <fieldset>
                 <label>Date</label>
-                <Field className="form-control" type="text" name="date" />
-                <ErrorMessage name="date" component="div" className="form-validation" />
+                <Field type="text" name="date" />
+                <ErrorMessage name="date" component="div" />
               </fieldset>
-              <fieldset className="form-group">
+              <fieldset>
                 {/* TODO: make this a select input:
                   walk-in, web reservation, phone, etc */}
                 <label>Type</label>
-                <Field className="form-control" type="text" name="type" />
-                <ErrorMessage name="type" component="div" className="form-validation" />
+                <Field type="text" name="type" />
+                <ErrorMessage name="type" component="div" />
               </fieldset>
 
-              <fieldset className="form-group">
+              <fieldset>
                 {/* TODO: make this a select input:
                  checkup, shots, sick, etc */}
                 <label>Reason</label>
-                <Field className="form-control" type="text" name="reason" />
-                <ErrorMessage name="reason" component="div" className="form-validation" />
+                <Field type="text" name="reason" />
+                <ErrorMessage name="reason" component="div" />
               </fieldset>
-              <button className="col btn-primary btn btn-sm" type="submit">
-                Save
-              </button>
+              <button type="submit">Save</button>
             </Form>
           )}
         </Formik>

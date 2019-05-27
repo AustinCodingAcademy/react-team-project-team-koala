@@ -26,7 +26,9 @@ class ApiService {
   }
 
   delete(id) {
+    // delete the data
     axios.delete(`${URL}/${this.table}/${id}`, config)
+    // then send promise back to calling function
     return axios.get(`${URL}/${this.table}`)
   }
 

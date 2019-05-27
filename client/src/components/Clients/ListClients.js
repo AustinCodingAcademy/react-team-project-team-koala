@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ApiService from '../../service/ApiService'
 import Icon from '../Icon'
 import Svglist from '../Icon/Svg'
+import AuthenticationService from '../../service/AuthenticationService'
 
 const api = new ApiService('clients')
 const TABLE = api.getTable()
@@ -11,7 +12,7 @@ class ListClients extends Component {
     super(props)
     this.state = {
       clients: [],
-      message: null
+      message: ''
     }
     this.deleteClicked = this.deleteClicked.bind(this)
     this.updateClicked = this.updateClicked.bind(this)
@@ -23,6 +24,10 @@ class ListClients extends Component {
     this.refresh()
   }
 
+  get header() {
+    const headers = { Authorization: 'Basic ' + sessionStorage.getItem('token') }
+  }
+
   refresh() {
     api.retrieveAll().then(response => {
       this.setState({ clients: response.data })
@@ -30,10 +35,14 @@ class ListClients extends Component {
   }
 
   deleteClicked(id) {
-    api.delete(id).then(response => {
-      this.setState({ message: 'Deleted' })
-      this.refresh()
-    })
+    let isLoggedIn = AuthenticationService.isUserLoggedIn()
+
+    if (isLoggedIn) {
+      api.delete(id).then(response => {
+        this.setState({ message: 'Deleted' })
+      })
+    }
+    this.refresh()
   }
 
   addClicked() {
@@ -43,12 +52,13 @@ class ListClients extends Component {
   updateClicked(id) {
     console.log(`update ${id}`)
     this.props.history.push(`/clients/${id}`)
+    this.refresh()
   }
 
   render() {
     console.log('render')
     return (
-      <div className="container-fluid mt-3">
+      <div>
         <h3>Clients</h3>
         {this.state.message && <div className="alert alert-success">{this.state.message}</div>}
 
@@ -77,6 +87,7 @@ class ListClients extends Component {
                   </button>
                   <button
                     name="delete"
+                    table="clients"
                     className="btn btn-transparent p-0"
                     onClick={() => this.deleteClicked(client.id)}
                   >

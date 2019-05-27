@@ -71,7 +71,7 @@ class PetComponent extends Component {
 
     return (
       <>
-        <div className="container">
+        <div>
           <Formik
             initialValues={{
               id,
@@ -92,29 +92,34 @@ class PetComponent extends Component {
 
                 {/* hide input when id is -1 */
                 id > 0 && (
-                  <fieldset className="form-group">
+                  <fieldset>
                     <label>Id</label>
-                    <Field className="form-control" type="text" name="id" disabled />
+                    <Field type="text" name="id" disabled />
                   </fieldset>
                 )}
-                <fieldset className="form-group" key={this.id}>
+                <fieldset key={this.id} name="id">
                   <label>Name</label>
-                  <Field className="form-control" type="text" name="name" />
+                  <Field type="text" name="name" />
                 </fieldset>
-                <ErrorMessage name="name" component="div" className="form-validation" />
-                <fieldset className="form-group" key={this.id}>
+                <ErrorMessage name="name" component="div" />
+                <fieldset key={this.gender} name="gender">
                   {/* TODO: create select input for gender: M, F */}
                   <label>Gender</label>
-                  <Field className="form-control" type="text" name="gender" />
+                  <Field type="text" name="gender" />
                 </fieldset>
-                <ErrorMessage name="gender" component="div" className="form-validation" />
-                <fieldset className="form-group" key={this.id}>
+                <ErrorMessage name="gender" component="div" />
+                <fieldset key={this.clientId}>
                   <label>Client Id</label>
-                  <Field className="form-control" type="text" name="clientId" />
+                  <Field type="text" name="clientId" />
                 </fieldset>
-                <ErrorMessage name="clientId" component="div" className="form-validation" />
-                <button className="col btn-primary btn btn-sm" type="submit" onSubmit={this.onSubmit}>
-                  Save
+                <ErrorMessage name="clientId" component="div" />
+                <button
+                  className="col btn-primary btn btn-sm"
+                  type="submit"
+                  name="save"
+                  onSubmit={this.onSubmit}
+                >
+                  {'Save'}
                 </button>
               </Form>
             )}
