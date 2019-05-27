@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @CrossOrigin(origins = "http://localhost:3000")
-
 @RestController
 public class AppointmentResource {
+
+    Logger logger = LoggerFactory.getLogger(AppointmentResource.class);
 
     @Autowired
     private AppointmentService appointmentManagementService;
@@ -66,6 +69,8 @@ public class AppointmentResource {
     public ResponseEntity<Appointment> updateAppointment(@PathVariable Integer id,
             @RequestBody Appointment appointment) {
         Appointment appointmentUpdated = appointmentManagementService.save(appointment);
+
+        logger.info(appointmentUpdated.toString());
         return new ResponseEntity<Appointment>(appointmentUpdated, HttpStatus.OK);
     }
 
@@ -76,6 +81,7 @@ public class AppointmentResource {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(createdAppointment.getId()).toUri();
 
+        logger.info(uri.toString());
         return ResponseEntity.created(uri).build();
     }
 

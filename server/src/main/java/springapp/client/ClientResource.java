@@ -45,9 +45,7 @@ public class ClientResource {
         return clientManagementService.getActiveClients();
     }
 
-    /**
-     * TODO: delete pets related to clients
-     */
+    // TODO: update clients table to reflect pet deletes
 
     @DeleteMapping("/api/clients/{id}")
     public ResponseEntity<Void> deleteClient(@PathVariable Integer id) {
