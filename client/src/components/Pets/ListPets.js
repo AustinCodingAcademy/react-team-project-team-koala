@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import ApiService from '../../service/ApiService'
 import Icon from '../Icon'
+import Bytesize from '../../common/Bytesize'
+import { Thead, TableCaption } from '../Table/Table'
 
 const api = new ApiService('pets')
 const TABLE = api.getTable()
@@ -9,7 +11,7 @@ class ListPets extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: [],
+      pets: [],
       message: null
     }
     this.deleteClicked = this.deleteClicked.bind(this)
@@ -18,21 +20,35 @@ class ListPets extends Component {
     this.refresh = this.refresh.bind(this)
   }
 
+  componentWillUnmount() {
+    console.log('componentWillUnmount')
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('shouldComponentUpdate')
+    console.log(nextProps)
+    console.log(nextState)
+    return true
+  }
+
   componentDidMount() {
     this.refresh()
   }
 
   refresh() {
     api.retrieveAll().then(response => {
-      this.setState({ data: response.data })
+      this.setState({ pets: response.data })
     })
   }
 
   deleteClicked(id) {
-    api.delete(id).then(response => {
-      this.setState({ message: 'Deleted' })
-      this.refresh()
-    })
+    // api.delete(id).then(response => {
+    //   this.setState({ message: 'Deleted' })
+    // })
+    api.delete(id)
+
+    this.props.history.push(`/${TABLE}`)
+    this.refresh()
   }
 
   addClicked() {
@@ -50,72 +66,48 @@ class ListPets extends Component {
       <React.Fragment>
         <div className="container-fluid mt-3">
           {this.state.message && <div className="alert alert-success">{this.state.message}</div>}
-          <h3 style={{ textTransform: 'capitalize', border: 0 }}>{TABLE}</h3>
-          <table className="table table-sm table-profile">
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Pet</th>
-                <th>Client</th>
 
-                <th />
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.data.map(dat => (
-                <>
-                  <tr key={dat.id}>
-                    <td name="id">#{dat.id}</td>
-                    <td>
-                      {/* <span name="name">
-                        <Icon type="icon-id-card-o" text={dat.name} />
-                      </span> */}
-                      <span name="gender">
-                        {dat.gender !== null ? (
-                          dat.gender === 'M' ? (
-                            <Icon type="icon-male" color="blue" />
-                          ) : (
-                            <Icon type="icon-female" color="pink" />
-                          )
-                        ) : (
-                          '..'
+          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr' }}>
+            <table className="table" table="pets">
+              <TableCaption title={TABLE} side={'top'} />
+              <Thead arr={['id', 'pet', 'client', '']} />
+              <tbody className="tbody">
+                {this.state.pets.map(pet => (
+                  <>
+                    <tr key={pet.id}>
+                      <td key="id" name="petId">
+                        {pet.id}
+                      </td>
+                      <td name="gender" key="gender" value={pet.gender}>
+                        {pet.gender !== null && (
+                          <Icon
+                            type={pet.gender === 'M' ? 'icon-male' : 'icon-female'}
+                            color={pet.gender === 'M' ? 'blue' : 'pink'}
+                            text={pet.name}
+                          />
                         )}
-                      </span>
-                      {dat.name}
-                    </td>
-                    <td name="TODO:">
-                      <Icon type="icon-user-circle-o" />
-                      {dat.clientId}
-                    </td>
-
-                    <td style={{ borderLeft: '1px solid #ddd' }}>
-                      <button
-                        name="update"
-                        className="btn btn-sm btn-transparent p-0"
-                        onClick={() => this.updateClicked(dat.id)}
-                      >
-                        <Icon type="icon-pencil" />
-                      </button>
-                      <button
-                        name="delete"
-                        className="btn btn-sm btn-transparent p-0"
-                        onClick={() => this.deleteClicked(dat.id)}
-                      >
-                        <Icon type="icon-trash" />
-                      </button>
-                    </td>
-                  </tr>
-                </>
-              ))}
-            </tbody>
-          </table>
-
-          <div className="row mt-2">
-            <div className="col">
-              <button className="btn btn-sm btn-outline-primary" tablename="pets" onClick={this.addClicked}>
-                <Icon type="icon-plus" />
-              </button>
-            </div>
+                      </td>
+                      <td key="clientId">
+                        <Bytesize
+                          icon="user"
+                          onClick={() => this.deleteClicked(pet.id)}
+                          text={pet.clientId}
+                          size="sm"
+                        />
+                        <Icon type="icon-user-circle-o" text={pet.clientId} />
+                      </td>
+                      <td key="edit">
+                        <Bytesize icon="edit" onClick={() => this.updateClicked(pet.id)} />
+                        <Bytesize icon="trash" onClick={() => this.deleteClicked(pet.id)} />
+                      </td>
+                    </tr>
+                  </>
+                ))}
+              </tbody>
+              <caption style={{ background: 'rgba(0,0,0,.05)' }}>
+                <Bytesize icon="plus" onClick={this.addClicked} />
+              </caption>
+            </table>
           </div>
         </div>
       </React.Fragment>
