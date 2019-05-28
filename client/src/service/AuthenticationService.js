@@ -30,7 +30,11 @@ class AuthenticationService {
   isUserLoggedIn() {
     let user = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME)
     if (user === null) return false
-    return true
+    return user
+  }
+
+  sendHeader(token) {
+    axios.defaults.headers.common['Authorization'] = token
   }
 
   getLoggedInUserName() {
@@ -40,12 +44,18 @@ class AuthenticationService {
   }
 
   setupAxiosInterceptors(token) {
-    axios.interceptors.request.use(config => {
-      if (this.isUserLoggedIn()) {
-        config.headers.authorization = token
+    axios.interceptors.request.use(
+      config => {
+        if (this.isUserLoggedIn()) {
+          config.headers.authorization = token
+        }
+        return config
+      },
+      function(error) {
+        return Promise.reject(error.response)
+        // https://github.com/axios/axios/issues/960#issuecomment-320659373
       }
-      return config
-    })
+    )
   }
 }
 

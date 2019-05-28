@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import ApiService from '../../service/ApiService'
 import Icon from '../Icon'
 import Svglist from '../Icon/Svg'
-import AuthenticationService from '../../service/AuthenticationService'
+import Bytesize from '../../common/Bytesize'
+import { Thead, Caption } from '../Table/Table'
 
 const api = new ApiService('clients')
 const TABLE = api.getTable()
@@ -24,10 +25,6 @@ class ListClients extends Component {
     this.refresh()
   }
 
-  get header() {
-    const headers = { Authorization: 'Basic ' + sessionStorage.getItem('token') }
-  }
-
   refresh() {
     api.retrieveAll().then(response => {
       this.setState({ clients: response.data })
@@ -35,13 +32,11 @@ class ListClients extends Component {
   }
 
   deleteClicked(id) {
-    let isLoggedIn = AuthenticationService.isUserLoggedIn()
-
-    if (isLoggedIn) {
-      api.delete(id).then(response => {
-        this.setState({ message: 'Deleted' })
-      })
-    }
+    api.delete(id)
+    // FIXME: correctly return promise for api.delete(id) - client, pet, and apt
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
+    this.setState({ message: 'Deleted' }) // not accurate
+    this.props.history.push(`/${TABLE}`)
     this.refresh()
   }
 
@@ -58,22 +53,11 @@ class ListClients extends Component {
   render() {
     console.log('render')
     return (
-      <div>
-        <h3>Clients</h3>
-        {this.state.message && <div className="alert alert-success">{this.state.message}</div>}
-
-        <table className="table table-sm table-profile">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Phone#</th>
-              <th>Address</th>
-              <th>Email</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>
+      <div className="container">
+        <table className="table" table="clients">
+          <Caption title={TABLE} side="top" />
+          <Thead arr={['id', 'name', 'phone#', 'address', 'email', '']} />
+          <tbody className="tbody">
             {this.state.clients.map(client => (
               <tr key={client.id}>
                 <td name="id">{client.id}</td>
@@ -81,34 +65,26 @@ class ListClients extends Component {
                 <td name="phone#">{client.phoneNumber}</td>
                 <td name="address">{client.address}</td>
                 <td name="email">{client.email}</td>
-                <td style={{ textAlign: 'right' }}>
-                  <button className="btn" onClick={() => this.updateClicked(client.id)}>
-                    {Svglist.edit()}
-                  </button>
-                  <button
+                <td key="edit" name="edit">
+                  <Bytesize
+                    icon="edit"
+                    name="update"
+                    onClick={() => this.updateClicked(client.id)}
+                  />
+                  <Bytesize
+                    icon="trash"
                     name="delete"
-                    table="clients"
-                    className="btn btn-transparent p-0"
                     onClick={() => this.deleteClicked(client.id)}
-                  >
-                    <Icon type="icon-trash" />
-                  </button>
+                  />
                 </td>
               </tr>
             ))}
           </tbody>
+          <Caption side={'bottom'}>
+            {this.state.message && <div className="alert">{this.state.message || ''}</div>}
+          </Caption>
         </table>
-        <div className="row">
-          <div className="col">
-            <button
-              className="btn btn-sm btn-outline-primary"
-              tablename="clients"
-              onClick={this.addClicked}
-            >
-              <Icon type="icon-plus" />
-            </button>
-          </div>
-        </div>
+        <button onClick={this.addClicked}>add new</button>
       </div>
     )
   }

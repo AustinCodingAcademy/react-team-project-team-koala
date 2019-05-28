@@ -13,8 +13,9 @@ class ApiService {
     return this.table
   }
 
-  retrieveAll() {
-    return axios.get(`${URL}/${this.table}`, config)
+  retrieveAll(token) {
+    token = token || config
+    return axios.get(`${URL}/${this.table}`, token)
   }
 
   fields() {
@@ -37,7 +38,11 @@ class ApiService {
   }
 
   create(name, data) {
-    return axios.post(`${URL}/${name}`, data, config)
+    // https://github.com/axios/axios#handling-errors
+    const params = new URLSearchParams()
+    params.append('data', data)
+    params.append('config', config)
+    return axios.post(`${URL}/${name}`, params)
   }
 }
 

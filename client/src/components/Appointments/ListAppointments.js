@@ -60,7 +60,9 @@ class ListAppointments extends Component {
   render() {
     return (
       <React.Fragment>
-        {this.state.message && <div className="alert alert-success">{this.state.message}</div>}
+        {(this.state.message || '') && (
+          <div className="alert alert-success">{this.state.message || ''}</div>
+        )}
 
         <table className="table" table="appointments">
           <Caption title={TABLE} side={'top'} />
@@ -98,10 +100,11 @@ class ListAppointments extends Component {
               </tr>
             ))}
           </tbody>
-          {/* <Caption side={'bottom'}>
-            <Bytesize icon="plus" onClick={this.addClicked} />
-          </Caption> */}
+          <Caption side={'bottom'}>
+            {this.state.message && <div className="alert">{this.state.message || ''}</div>}
+          </Caption>
         </table>
+        <button onClick={this.addClicked}>add new</button>
       </React.Fragment>
     )
   }

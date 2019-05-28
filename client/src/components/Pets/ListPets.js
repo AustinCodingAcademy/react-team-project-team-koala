@@ -61,9 +61,11 @@ class ListPets extends Component {
   render() {
     return (
       <React.Fragment>
-        {this.state.message && <div className="alert alert-success">{this.state.message}</div>}
+        {(this.state.message || '') && (
+          <div className="alert alert-success">{this.state.message || ''}</div>
+        )}
 
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr' }}>
+        <div style={{}}>
           <table className="table" table="pets">
             <Caption title={TABLE} side={'top'} />
             <Thead arr={['id', 'pet', 'client', '']} />
@@ -82,8 +84,8 @@ class ListPets extends Component {
                       />
                     )}
                   </td>
-                  <td key="clientId" name="cliendId" value={pet.clientId}>
-                    <Bytesize icon="user" id="3333" size="sm" />
+                  <td key="clientId" name="clientId" value={pet.clientId}>
+                    {/* <Bytesize icon="user" id="3333" size="sm" /> */}
                     <Icon type="icon-user-circle-o" text={pet.clientId} />
                   </td>
                   <td key="edit" name="edit">
@@ -102,9 +104,10 @@ class ListPets extends Component {
               ))}
             </tbody>
             <Caption side={'bottom'}>
-              <Bytesize icon="plus" onClick={this.addClicked} />
+              {this.state.message && <div className="alert">{this.state.message || ''}</div>}
             </Caption>
           </table>
+          <button onClick={this.addClicked}>add new</button>
         </div>
       </React.Fragment>
     )
