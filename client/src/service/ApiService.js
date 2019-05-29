@@ -13,6 +13,11 @@ class ApiService {
     return this.table
   }
 
+  getData(token) {
+    token = token || config
+    return axios.get(`${URL}/${this.table}`, token)
+  }
+
   retrieveAll(token) {
     token = token || config
     return axios.get(`${URL}/${this.table}`, token)

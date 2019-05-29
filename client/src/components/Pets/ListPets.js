@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ApiService from '../../service/ApiService'
-import Icon from '../Icon'
-import Bytesize from '../../common/Bytesize'
+import Icon from '../../components/Icon'
 import { Thead, Caption } from '../Table/Table'
 
 const api = new ApiService('pets')
@@ -64,51 +63,50 @@ class ListPets extends Component {
         {(this.state.message || '') && (
           <div className="alert alert-success">{this.state.message || ''}</div>
         )}
-
-        <div style={{}}>
-          <table className="table" table="pets">
-            <Caption title={TABLE} side={'top'} />
-            <Thead arr={['id', 'pet', 'client', '']} />
-            <tbody className="tbody">
-              {this.state.pets.map(pet => (
-                <tr key={pet.id}>
-                  <td key="id" name="petId">
-                    {pet.id}
-                  </td>
-                  <td name="gender" key="gender" value={pet.gender}>
-                    {pet.gender !== null && (
-                      <Icon
-                        type={pet.gender === 'M' ? 'icon-male' : 'icon-female'}
-                        color={pet.gender === 'M' ? 'blue' : 'pink'}
-                        text={pet.name}
-                      />
-                    )}
-                  </td>
-                  <td key="clientId" name="clientId" value={pet.clientId}>
-                    {/* <Bytesize icon="user" id="3333" size="sm" /> */}
-                    <Icon type="icon-user-circle-o" text={pet.clientId} />
-                  </td>
-                  <td key="edit" name="edit">
-                    <Bytesize
-                      icon="edit"
-                      name="update"
-                      onClick={() => this.updateClicked(pet.id)}
+        <table className="table" table="pets">
+          <Caption title={TABLE} side={'top'} />
+          <Thead arr={['id', 'pet', 'client', '']} />
+          <tbody className="tbody">
+            {this.state.pets.map(pet => (
+              <tr key={pet.id}>
+                <td key="id" name="petId">
+                  {pet.id}
+                </td>
+                <td name="gender" key="gender" value={pet.gender}>
+                  {pet.gender !== null && (
+                    <Icon
+                      type={pet.gender === 'M' ? 'icon-male' : 'icon-female'}
+                      color={pet.gender === 'M' ? 'blue' : 'pink'}
+                      text={pet.name}
                     />
-                    <Bytesize
-                      icon="trash"
-                      name="delete"
-                      onClick={() => this.deleteClicked(pet.id)}
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-            <Caption side={'bottom'}>
-              {this.state.message && <div className="alert">{this.state.message || ''}</div>}
-            </Caption>
-          </table>
-          <button onClick={this.addClicked}>add new</button>
-        </div>
+                  )}
+                </td>
+                <td key="clientId" name="clientId" value={pet.clientId}>
+                  <Icon type="icon-user-circle-o" text={pet.clientId} />
+                </td>
+                <td key="edit" name="edit">
+                  <Icon
+                    type="icon-pencil"
+                    name="update"
+                    id={pet.id}
+                    onClick={() => this.updateClicked(pet.id)}
+                  />
+                  <Icon
+                    type="icon-trash"
+                    name="delete"
+                    id={pet.id}
+                    text="delete"
+                    onClick={() => this.deleteClicked(pet.id)}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+          <Caption side={'bottom'}>
+            {this.state.message && <div className="alert">{this.state.message || ''}</div>}
+          </Caption>
+        </table>
+        <button onClick={this.addClicked}>add new</button>
       </React.Fragment>
     )
   }

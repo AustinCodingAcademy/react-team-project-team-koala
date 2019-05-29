@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import ApiService from '../../service/ApiService'
-import Icon from '../Icon'
-import Svglist from '../Icon/Svg'
-import Bytesize from '../../common/Bytesize'
+import Icon from '../../components/Icon'
+
 import { Thead, Caption } from '../Table/Table'
 
 const api = new ApiService('clients')
@@ -66,14 +65,16 @@ class ListClients extends Component {
                 <td name="address">{client.address}</td>
                 <td name="email">{client.email}</td>
                 <td key="edit" name="edit">
-                  <Bytesize
-                    icon="edit"
+                  <Icon
+                    type="icon-pencil"
                     name="update"
+                    id={client.id}
                     onClick={() => this.updateClicked(client.id)}
                   />
-                  <Bytesize
-                    icon="trash"
+                  <Icon
+                    type="icon-trash"
                     name="delete"
+                    id={client.id}
                     onClick={() => this.deleteClicked(client.id)}
                   />
                 </td>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ApiService from '../../service/ApiService'
-import Bytesize from '../../common/Bytesize'
+import Icon from '../../components/Icon'
 import { Thead, Caption } from '../Table/Table'
 
 const api = new ApiService('appointments')
@@ -86,12 +86,12 @@ class ListAppointments extends Component {
                   {appointment.reason}
                 </td>
                 <td key="edit" name="edit">
-                  <Bytesize
+                  <Icon
                     icon="edit"
                     name="update"
                     onClick={() => this.updateClicked(appointment.id)}
                   />
-                  <Bytesize
+                  <Icon
                     icon="trash"
                     name="delete"
                     onClick={() => this.deleteClicked(appointment.id)}

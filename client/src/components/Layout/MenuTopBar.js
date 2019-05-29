@@ -8,7 +8,8 @@ import AuthenticationService from '../../service/AuthenticationService'
 const items = [
   {
     label: 'Profile',
-    icon: 'pi pi-fw pi-user'
+    icon: 'pi pi-fw pi-user',
+    url: '/profile'
   },
   {
     label: 'Settings',

@@ -9,14 +9,14 @@ import AppointmentComponent from '../Appointments/AppointmentComponent'
 import AuthenticatedRoute from '../AuthenticatedRoute'
 import ClientComponent from '../Clients/ClientComponent'
 import Dashboard from '../Pages/Dashboard'
-import Example from '../Form/App'
+import UserProfile from '../Form/UserForm'
 import Home from './Home'
 import ListAppointments from '../Appointments/ListAppointments'
 import ListClients from '../Clients/ListClients'
 import ListPets from '../Pets/ListPets'
 import Page404 from './Page404'
 import PetComponent from '../Pets/PetComponent'
-import Signup from '../Signup/Signup'
+import Signup from '../Pages/Signup'
 import Tables from '../Pages/Tables'
 
 import 'primereact/resources/themes/nova-light/theme.css'
@@ -24,17 +24,19 @@ import 'primereact/resources/primereact.min.css'
 import 'primeicons/primeicons.css'
 import 'primeflex/primeflex.css'
 import './Layout.css'
+
 class Layout extends React.Component {
   render() {
     return (
       <Router>
         <Switch>
           <Route path="/" exact component={LoginComponent} />
-          <Route path="/home" exact component={Home} />
           <Route path="/login" exact component={LoginComponent} />
           <Route path="/logout" exact component={LogoutComponent} />
-          <Route path="/example" exact component={Example} />
+
           <Route path="/signup" exact component={Signup} />
+          <AuthenticatedRoute path="/profile" exact component={UserProfile} />
+          <AuthenticatedRoute path="/home" exact component={Home} />
           <AuthenticatedRoute path="/admin" exact component={Admin} />
           <AuthenticatedRoute path="/admin/dashboard" exact component={Dashboard} />
           <AuthenticatedRoute path="/logout" exact component={LogoutComponent} />
