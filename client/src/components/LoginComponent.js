@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import AuthenticationService from '../service/AuthenticationService'
-//import withRouter from 're'
+import { InputText } from 'primereact/inputtext'
+import { Button } from 'primereact/button'
+
 class LoginComponent extends Component {
   constructor(props) {
     super(props)
@@ -11,7 +13,6 @@ class LoginComponent extends Component {
       hasLoginFailed: false,
       showSuccessMessage: false
     }
-
     this.handleChange = this.handleChange.bind(this)
     this.loginClicked = this.loginClicked.bind(this)
   }
@@ -29,7 +30,7 @@ class LoginComponent extends Component {
     )
       .then(() => {
         AuthenticationService.registerSuccessfulLogin(this.state.username, this.state.password)
-        this.props.history.push(`/appointments`)
+        this.props.history.push(`/home`)
       })
       .catch(() => {
         this.setState({ showSuccessMessage: false })
@@ -39,42 +40,45 @@ class LoginComponent extends Component {
 
   render() {
     return (
-      <div>
-        <div className="container-fluid">
-          {this.state.hasLoginFailed && (
-            <div className="alert alert-warning">Invalid Credentials</div>
-          )}
-          {this.state.showSuccessMessage && <div>Login Sucessful</div>}
+      <>
+        {this.state.hasLoginFailed && (
+          <div className="alert alert-warning">Invalid Credentials</div>
+        )}
 
-          <div className="form-group col-sm-5 col-md-4 p-2 mx-auto mt-4">
-            <div className="form-group">
-              {/* <form> */}
-              <label>{'Username:'}</label>
-              <input
-                type="text"
-                name="username"
-                autoComplete="username"
-                className="form-control"
-                value={this.state.username}
-                onChange={this.handleChange}
-              />
-              <label>{'Password:'}</label>
-              <input
-                type="password"
-                name="password"
-                autoComplete="current-password"
-                className="form-control"
-                value={this.state.password}
-                onChange={this.handleChange}
-              />
-              <button className="btn btn-outline-primary" onClick={this.loginClicked}>
-                Login
-              </button>
-              {/* </form> */}
-            </div>
+        <div className="p-g form-group">
+          <div className="p-inputgroup mb-2">
+            {/* OPTIMIZE: add mixin function for icon addon */}
+            <span className="p-inputgroup-addon">
+              <i className="pi pi-user" />
+            </span>
+            <InputText
+              placeholder="Username"
+              type="text"
+              name="username"
+              type="text"
+              value={this.state.username}
+              onChange={this.handleChange}
+            />
           </div>
+
+          <div className="p-inputgroup mb-2">
+            <span className="p-inputgroup-addon">
+              <i className="pi pi-lock" />
+            </span>
+            <InputText
+              placeholder="Password"
+              type="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              autocomplete=""
+            />
+          </div>
+
+          <Button label="sign in" onClick={this.loginClicked} />
+          <Button label="register" className="ml-2 p-button-secondary" />
         </div>
-      </div>
+      </>
     )
   }
 }
