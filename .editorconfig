@@ -9,6 +9,9 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
+[*.md]
+trim_trailing_whitespace = false
+
 [*.js]
 charset = utf-8
 indent_style = space
@@ -18,7 +21,7 @@ indent_size = 2
 indent_style = space
 indent_size = 2
 
-[*.{js,rb,css,html}]
+[*.{css,html}]
 indent_size = 2
 
 [*.java]

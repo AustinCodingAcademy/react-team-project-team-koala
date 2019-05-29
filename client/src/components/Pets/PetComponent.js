@@ -38,12 +38,16 @@ class PetComponent extends Component {
   }
 
   validate(values) {
-    // TODO: form validation for pets
-    const errors = {}
-    // errors.name = values.name ? '' : 'Cannot be blank'
-    // errors.gender = values.gender ? '' : 'Cannot be blank'
-    // errors.clientId = values.clientId ? '' : 'Cannot be blank'
-
+    let errors = {}
+    if (!values.name) {
+      errors.name = 'Cannot be blank'
+    }
+    if (!values.gender) {
+      errors.gender = 'Cannot be blank'
+    }
+    if (!values.clientId) {
+      errors.clientId = 'Cannot be blank'
+    }
     return errors
   }
 

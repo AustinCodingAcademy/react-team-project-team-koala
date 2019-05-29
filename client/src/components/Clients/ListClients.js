@@ -65,18 +65,20 @@ class ListClients extends Component {
                 <td name="address">{client.address}</td>
                 <td name="email">{client.email}</td>
                 <td key="edit" name="edit">
-                  <Icon
-                    type="icon-pencil"
-                    name="update"
+                  <button
+                    className="btn"
                     id={client.id}
                     onClick={() => this.updateClicked(client.id)}
-                  />
-                  <Icon
-                    type="icon-trash"
-                    name="delete"
+                  >
+                    <Icon icon="icon-pencil" name="update" />
+                  </button>
+                  <button
+                    className="btn"
                     id={client.id}
                     onClick={() => this.deleteClicked(client.id)}
-                  />
+                  >
+                    <Icon icon="icon-trash" name="delete" />
+                  </button>
                 </td>
               </tr>
             ))}

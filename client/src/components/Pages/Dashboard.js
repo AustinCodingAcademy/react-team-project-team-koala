@@ -19,7 +19,7 @@ const petCols = [
 const clientCols = [
   { field: 'id', header: 'id' },
   { field: 'name', header: 'name' },
-  { field: 'phoneNumber', header: 'phoneNumber' },
+  { field: 'phoneNumber', header: 'phone#' },
   { field: 'address', header: 'address' },
   { field: 'email', header: 'email' }
 ]
@@ -31,19 +31,27 @@ const apptCols = [
   { field: 'type', header: 'type' },
   { field: 'reason', header: 'reason' }
 ]
-
+const style = {
+  json: {
+    marginTop: '1rem',
+    borderTop: '1px solid #ccc',
+    padding: '.25rem',
+    color: '#444',
+    fontSize: '10pt'
+  }
+}
 class PetTable extends Component {
   constructor() {
     super()
     this.state = {
-      pets: []
+      data: []
     }
-    this.petservice = new ApiService('pets')
+    this.service = new ApiService('pets')
   }
 
   refresh() {
-    this.petservice.retrieveAll().then(response => {
-      this.setState({ pets: response.data })
+    this.service.retrieveAll().then(response => {
+      this.setState({ data: response.data })
     })
   }
 
@@ -56,7 +64,14 @@ class PetTable extends Component {
     let dynamicColumns = cols.map((col, i) => {
       return <Column key={col.field} field={col.field} header={col.header} />
     })
-    return <DataTable value={this.state.pets}>{dynamicColumns}</DataTable>
+    return (
+      <>
+        <DataTable value={this.state.data}>{dynamicColumns}</DataTable>
+        <div style={style.json} className="json-data">
+          {JSON.stringify(this.state.data, null, 2)}
+        </div>
+      </>
+    )
   }
 }
 
@@ -84,7 +99,14 @@ class ClientTable extends Component {
     let dynamicColumns = cols.map((col, i) => {
       return <Column key={col.field} field={col.field} header={col.header} />
     })
-    return <DataTable value={this.state.data}>{dynamicColumns}</DataTable>
+    return (
+      <>
+        <DataTable value={this.state.data}>{dynamicColumns}</DataTable>
+        <div style={style.json} className="json-data">
+          {JSON.stringify(this.state.data, null, 2)}
+        </div>
+      </>
+    )
   }
 }
 
@@ -112,7 +134,14 @@ class ApptTable extends Component {
     let dynamicColumns = cols.map((col, i) => {
       return <Column key={col.field} field={col.field} header={col.header} />
     })
-    return <DataTable value={this.state.data}>{dynamicColumns}</DataTable>
+    return (
+      <>
+        <DataTable value={this.state.data}>{dynamicColumns}</DataTable>
+        <div style={style.json} className="json-data">
+          {JSON.stringify(this.state.data, null, 2)}
+        </div>
+      </>
+    )
   }
 }
 
@@ -129,7 +158,17 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="p-grid p-fluid dashboard">
-        <div className="p-col-12 p-md-8 p-lg-6">
+        <div className="p-col-12 p-md-12 p-lg-6 p-fluid">
+          <div className="card">
+            <Chart type="line" data={this.state.lineData} />
+          </div>
+        </div>
+        <div className="p-col-12 p-md-12 p-lg-6 p-fluid">
+          {/* TODO: install calendar plugin */}
+          <Panel header="Calendar" style={{ height: '100%' }} />
+        </div>
+
+        <div className="p-col-12 p-md-6 p-fluid">
           <Panel header="Pets">
             <div className="p-grid">
               <div className="p-col-12" />
@@ -138,7 +177,7 @@ class Dashboard extends Component {
           </Panel>
         </div>
 
-        <div className="p-col-12 p-md-8 p-lg-6 p-fluid ">
+        <div className="p-col-12 p-md-6 p-fluid">
           <Panel header="Appointments">
             <div className="p-grid">
               <div className="p-col-12" />
@@ -147,7 +186,7 @@ class Dashboard extends Component {
           </Panel>
         </div>
 
-        <div className="p-col-12 p-md-8 p-lg-6 p-fluid ">
+        <div className="p-col-12 p-md-6 p-lg-12 p-fluid">
           <Panel header="Clients">
             <div className="p-grid">
               <div className="p-col-12" />
@@ -156,8 +195,8 @@ class Dashboard extends Component {
           </Panel>
         </div>
 
-        <div className="p-col-12 p-md-4 p-fluid ">
-          <Panel header="Clients">
+        {/* <div className="p-col-12 p-md-6 p-lg-4 p-fluid ">
+          <Panel header="Message">
             <div className="p-grid">
               <div className="p-col-12" />
               <div className="p-col-12">
@@ -171,17 +210,7 @@ class Dashboard extends Component {
               </div>
             </div>
           </Panel>
-        </div>
-
-        <div className="p-col-12 p-lg-6">
-          <div className="card">
-            <Chart type="line" data={this.state.lineData} />
-          </div>
-        </div>
-        <div className="p-col-12 p-lg-8">
-          {/* TODO: install calendar plugin */}
-          <Panel header="Calendar" style={{ height: '100%' }} />
-        </div>
+        </div> */}
       </div>
     )
   }

@@ -1,0 +1,36 @@
+.p-toolbar{border:0!important}
+.site-title{
+  font-size:2em;
+  font-weight:bold;
+  line-height:1;
+}
+.site-subtitle{
+  font-weight:normal;
+  line-height:1;
+}
+
+.bg-unset{
+  background:unset!important;
+}
+.border-unset{
+border:unset!important;
+}
+.justify-spacebetween{
+  justify-content: space-between
+}
+.p-toolbar{
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.2)
+}
+table, td{
+  overflow-x:scroll;
+}
+
+.json-data{
+  height:40px;
+  overflow:scroll;
+  background:#eee;
+}
+
+.json-data:hover{
+  height:min-content
+}

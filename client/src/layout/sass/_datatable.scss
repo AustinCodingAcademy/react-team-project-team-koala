@@ -1,0 +1,186 @@
+//@extend-elements
+//original selectors
+//.p-datatable-header, .p-datatable-footer
+%extend_1 {
+	padding: .25em .5em;
+	text-align: center;
+	font-weight: bold;
+}
+
+.p-datatable {
+	position: relative;
+	table {
+		border-collapse: collapse;
+		width: 100%;
+		table-layout: auto!important;
+	}
+	.p-sortable-column {
+        cursor: pointer;
+        font-family: $font-family-sans-serif;
+	}
+	.p-sortable-column-icon {
+		vertical-align: middle;
+	}
+	.p-paginator-top {
+		border-bottom: 0 none;
+	}
+	.p-paginator-bottom {
+		border-top: 0 none;
+	}
+	.p-column-resizer {
+		display: block;
+		position: absolute !important;
+		top: 0;
+		right: 0;
+		margin: 0;
+		width: .5em;
+		height: 100%;
+		padding: 0;
+		cursor: col-resize;
+		border: 1px solid transparent;
+	}
+	.p-column-resizer-helper {
+		width: 1px;
+		position: absolute;
+		z-index: 10;
+		display: none;
+	}
+	.p-datatable-loading-icon {
+		font-size: 2em;
+	}
+	.p-datatable-thead > tr > th {
+		padding: .25em .5em;
+	}
+	.p-datatable-tbody > tr > td {
+		padding: .25em .5em;
+		&.p-cell-editing .p-component {
+			width: 100%;
+		}
+	}
+	.p-datatable-tfoot > tr > td {
+		padding: .25em .5em;
+	}
+}
+.p-datatable-header {
+	@extend %extend_1;
+	border-bottom: 0 none;
+}
+.p-datatable-footer {
+	@extend %extend_1;
+	border-top: 0 none;
+}
+.p-datatable-scrollable-wrapper {
+	position: relative;
+}
+.p-datatable-scrollable-header {
+	overflow: hidden;
+	border: 0 none;
+}
+.p-datatable-scrollable-footer {
+	overflow: hidden;
+	border: 0 none;
+}
+.p-datatable-scrollable-body {
+	overflow: scroll;
+	position: relative;
+	> table > .p-datatable-tbody > tr:first-child > td {
+		border-top: 0 none;
+	}
+}
+.p-datatable-virtual-table {
+	position: absolute;
+}
+.p-datatable-frozen-view {
+	.p-datatable-scrollable-body {
+		overflow: hidden;
+	}
+	> .p-datatable-scrollable-body > table > .p-datatable-tbody > tr > td:last-child {
+		border-right: 0 none;
+	}
+}
+.p-datatable-unfrozen-view {
+	position: absolute;
+	top: 0;
+}
+.p-column-filter {
+	width: 100%;
+}
+.p-datatable-resizable {
+	.p-resizable-column {
+		//Instead of the line below you could use @include background-clip($clip)
+		background-clip: padding-box;
+		position: relative;
+	}
+	> .p-datatable-wrapper {
+		overflow-x: auto;
+	}
+	.p-datatable-thead > tr > th {
+		overflow: hidden;
+	}
+	.p-datatable-tfoot > tr > td {
+		overflow: hidden;
+	}
+	.p-datatable-tbody > tr > td {
+		overflow: hidden;
+	}
+}
+.p-datatable-reorder-indicator-up {
+	position: absolute;
+	display: none;
+}
+.p-datatable-reorder-indicator-down {
+	position: absolute;
+	display: none;
+}
+@media screen and(max-width: 40em) {
+	.p-datatable-responsive {
+		.p-datatable-thead > tr > th {
+			display: none !important;
+		}
+		.p-datatable-tfoot > tr > td {
+			display: none !important;
+		}
+		.p-datatable-tbody > tr > td {
+			text-align: left;
+			display: block;
+			border: 0 none;
+			width: 100% !important;
+			float: left;
+			clear: left;
+			.p-column-title {
+				padding: .4em;
+				min-width: 30%;
+				display: inline-block;
+				margin: -.4em 1em -.4em -.4em;
+				font-weight: bold;
+			}
+		}
+	}
+}
+.p-datatable-loading-overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0.1;
+	z-index: 1;
+}
+.p-datatable-loading-content {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	z-index: 2;
+	margin-top: -1em;
+	margin-left: -1em;
+}
+.p-datatable-auto-layout > .p-datatable-wrapper {
+	overflow-x: scroll;
+	> table {
+		table-layout: auto;
+	}
+}
+.p-datatable-resizable-fit .p-resizable-column:last-child .p-column-resizer {
+	display: none;
+}
+.p-datatable-responsive .p-datatable-tbody > tr > td .p-column-title {
+	display: none;
+}

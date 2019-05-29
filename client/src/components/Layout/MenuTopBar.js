@@ -24,15 +24,15 @@ const items = [
     url: '/tables',
     items: [
       {
-        label: 'pets',
+        label: 'Pets',
         url: '/pets'
       },
       {
-        label: 'clients',
+        label: 'Clients',
         url: '/clients'
       },
       {
-        label: 'appointments',
+        label: 'Appointments',
         url: '/appointments'
       }
     ]
@@ -58,7 +58,18 @@ class MenuTopBar extends Component {
     const whoisLoggedIn = AuthenticationService.getLoggedInUserName()
 
     return (
-      <Toolbar style={{ position: 'fixed', top: 0, zIndex: 1000, width: '100%' }}>
+      <Toolbar
+        style={{
+          position: 'fixed',
+          borderRadius: 0,
+          top: 0,
+          left: 0,
+          zIndex: 1000,
+          width: '100%',
+          background: '#007ad9'
+        }}
+        className="bg-primary"
+      >
         <div className="p-col-12">
           <div className="p-toolbar-group-left nav-admin">
             <TieredMenu model={items} popup={true} ref={el => (this.menu = el)} />
@@ -66,7 +77,7 @@ class MenuTopBar extends Component {
               <Button icon="pi pi-ellipsis-h" onClick={event => this.menu.toggle(event)} />
             )}
             <Link to="./home">
-              <Button icon="pi pi-home" />
+              <Button icon="pi pi-home" className="mx-1" />
             </Link>
           </div>
           {isUserLoggedIn && (

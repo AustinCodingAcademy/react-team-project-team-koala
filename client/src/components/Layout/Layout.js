@@ -19,11 +19,12 @@ import PetComponent from '../Pets/PetComponent'
 import Signup from '../Pages/Signup'
 import Tables from '../Pages/Tables'
 
-import 'primereact/resources/themes/nova-light/theme.css'
 import 'primereact/resources/primereact.min.css'
+// import 'primereact/resources/themes/nova-colored/theme.css'
 import 'primeicons/primeicons.css'
 import 'primeflex/primeflex.css'
 import './Layout.css'
+import '../../layout/layout.css'
 
 class Layout extends React.Component {
   render() {

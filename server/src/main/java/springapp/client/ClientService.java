@@ -13,9 +13,10 @@ public class ClientService {
     private static Integer idCounter = 0;
 
     {
-        clients.add(new Client(++idCounter, "Annie", "832000000", "123 Address", "annie@me.com"));
-        clients.add(new Client(++idCounter, "Spagon", "1234567899", "1234 Address", "spagon@me.com"));
-        clients.add(new Client(++idCounter, "Betty", "832000000", "123 Address", "betty@me.com"));
+        clients.add(new Client(++idCounter, "Annie", "832-333-4444", "123 One Way", "annie@me.com"));
+        clients.add(new Client(++idCounter, "Spagon", "123-456-7899", "1234 Address", "spagon@me.com"));
+        clients.add(new Client(++idCounter, "Betty", "832-000-0000", "123 Sunset Blvd", "betty@me.com"));
+
     }
 
     public List<Client> findAll() {

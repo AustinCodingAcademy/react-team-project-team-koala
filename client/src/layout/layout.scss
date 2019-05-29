@@ -3,6 +3,10 @@ $primary:       #3755BE;
 $primary-2:     #FF8E88;
 $primary-3:     #1B1F3B;
 
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, "Noto Sans", "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base: $font-family-sans-serif !default;
+
 $fontSize:14px;
 $bodyBgColor:#edf0f5;
 $textColor:#333333;
@@ -17,12 +21,13 @@ $scrollPanelBgColor:#aaaaaa;
 $menuitemBadgeBgColor:#007be5;
 $menuitemBadgeColor:#ffffff;
 $submenuFontSize:13px;
+$menuIconColor: #0388e5;
 
 /* Menu Dark*/
 $menuDarkBgColorFirst:#4d505b;
 $menuDarkBgColorLast:#3b3e47;
 $menuitemDarkColor:#ffffff;
-$menuitemDarkHoverColor:#0388e5;
+$menuitemDarkHoverColor:#0388e590;
 $menuitemDarkActiveColor:#0388e5;
 $menuitemDarkActiveBgColor:#2e3035;
 $menuitemDarkBorderColor:rgba(52, 56, 65, 0.6);

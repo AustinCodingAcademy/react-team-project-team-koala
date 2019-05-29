@@ -16,10 +16,10 @@ public class PetService {
     private static Integer idCounter = 0;
 
     {
-        pets.add(new Pet(++idCounter, "charlie", "M", 1));
-        pets.add(new Pet(++idCounter, "kite", "F", 2));
-        pets.add(new Pet(++idCounter, "shadow", "M", 1));
-        pets.add(new Pet(++idCounter, "roxy", "F", 3));
+        pets.add(new Pet(++idCounter, "Charlie", "M", 1));
+        pets.add(new Pet(++idCounter, "Kite", "F", 2));
+        pets.add(new Pet(++idCounter, "Shadow", "M", 1));
+        pets.add(new Pet(++idCounter, "Roxy", "F", 3));
     }
 
     public List<Pet> findAll() {

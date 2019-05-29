@@ -74,7 +74,6 @@ class LoginComponent extends Component {
               autocomplete=""
             />
           </div>
-
           <Button label="sign in" onClick={this.loginClicked} />
           <Button label="register" className="ml-2 p-button-secondary" />
         </div>

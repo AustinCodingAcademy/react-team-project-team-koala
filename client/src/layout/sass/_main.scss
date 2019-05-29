@@ -7,7 +7,7 @@ html {
 }
 
 body {
-    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: $font-family-sans-serif;
     font-size: $fontSize;
     color: $textColor;
     background-color: $bodyBgColor;
@@ -188,7 +188,7 @@ a {
 
         .layout-logo {
             text-align: center;
-            margin-top: 24px;   
+            margin-top: 24px;
         }
 
         .profile {
@@ -468,20 +468,20 @@ a {
             .layout-sidebar {
                 left: -250px;
             }
-            
+
             .layout-topbar {
                 left: 0;
             }
-    
+
             .layout-main, .layout-footer {
                 margin-left: 0;
             }
-    
+
             &.layout-overlay-sidebar-active {
                 .layout-sidebar {
                     left: 0;
                 }
-    
+
                 .layout-topbar  {
                     left: 250px;
                 }
@@ -492,20 +492,20 @@ a {
             .layout-sidebar {
                 left: 0;
             }
-            
+
             .layout-topbar {
                 left: 250px;
             }
-    
+
             .layout-main, .layout-footer {
                 margin-left: 250px;
             }
-    
+
             &.layout-static-sidebar-inactive {
                 .layout-sidebar {
                     left: -250px;
                 }
-    
+
                 .layout-topbar  {
                     left: 0;
                 }

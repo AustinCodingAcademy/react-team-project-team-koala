@@ -119,3 +119,13 @@
 .icon-id-card-o:before {
   content: '\f2c3';
 }
+
+.btn{
+  all:unset;
+  padding:.05rem;
+  background:rgba(255,255,255,.5);
+  margin:.05rem;
+}
+.btn:hover{
+  background:rgba(0,0,0,.075);
+}

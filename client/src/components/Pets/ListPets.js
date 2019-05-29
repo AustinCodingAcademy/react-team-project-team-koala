@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ApiService from '../../service/ApiService'
-import Icon from '../../components/Icon'
+import Icon from '../../components/Icon/Icon'
 import { Thead, Caption } from '../Table/Table'
 
 const api = new ApiService('pets')
@@ -74,30 +74,26 @@ class ListPets extends Component {
                 </td>
                 <td name="gender" key="gender" value={pet.gender}>
                   {pet.gender !== null && (
-                    <Icon
-                      type={pet.gender === 'M' ? 'icon-male' : 'icon-female'}
-                      color={pet.gender === 'M' ? 'blue' : 'pink'}
-                      text={pet.name}
-                    />
+                    <>
+                      <Icon
+                        icon={pet.gender === 'M' ? 'icon-male' : 'icon-female'}
+                        color={pet.gender === 'M' ? 'blue' : 'pink'}
+                      />
+                      <span>{pet.name}</span>
+                    </>
                   )}
                 </td>
                 <td key="clientId" name="clientId" value={pet.clientId}>
-                  <Icon type="icon-user-circle-o" text={pet.clientId} />
+                  <Icon icon="icon-user-circle-o" text={pet.clientId} />
+                  <span>{pet.clientId}</span>
                 </td>
                 <td key="edit" name="edit">
-                  <Icon
-                    type="icon-pencil"
-                    name="update"
-                    id={pet.id}
-                    onClick={() => this.updateClicked(pet.id)}
-                  />
-                  <Icon
-                    type="icon-trash"
-                    name="delete"
-                    id={pet.id}
-                    text="delete"
-                    onClick={() => this.deleteClicked(pet.id)}
-                  />
+                  <button className="btn" id={pet.id} onClick={() => this.updateClicked(pet.id)}>
+                    <Icon icon="icon-pencil" name="update" />
+                  </button>
+                  <button className="btn" id={pet.id} onClick={() => this.deleteClicked(pet.id)}>
+                    <Icon icon="icon-trash" name="delete" />
+                  </button>
                 </td>
               </tr>
             ))}
