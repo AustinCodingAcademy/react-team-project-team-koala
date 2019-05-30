@@ -1,14 +1,14 @@
 # server
 
-https://medium.com/@falkohussain/basic-rest-api-application-using-spring-boot-react-and-mysql-part-i-the-back-end-e79028f8a67b
-
 -   **@RestController**: Tells Spring that this is a controller class. This is a convenient annotation that combines the behavior of both `@Controller` and `@ResponseBody` into one. It creates a map of our model object and returns the object and the object data directly into the HTTP response as JSON or XML.
 -   **@Autowired**: To call the bean ‘groceryListRepository’. It will be used to handle our data.
-    @CrossOrigin: You do not have to worry about this annotation yet as we use it for Part 2 of this tutorial. But we use it to get our front-end React domain to be able to request the method.
-    @RequestBody: Maps the HTTP request body to a domain object, essentially our Java entity object. The RequestBody is usually in JSON format and contains the data that can be updated or stored.
-    @GetMapping: We use this for our GET request to get all the items from our MySQL database. Here we create a new ArrayList in which we store every item from our database by using the findAll() method provided by JpaRepository. The path is set to ‘/items’, when the user request for a GET on http://localhost:8080/items (in my case http://localhost:8181/items, because I set my port to 8181 in the application.properties files) they get back an ArrayList of all our items.
-    @PostMapping: We are using the PostMapping annotation for our POST request to be able to save a new item to our database. Here we use the RequestBody annotation so that we can save the data we entered in using the method save() provided by JpaRepository.
-    @DeleteMapping: Our DeleteMapping annotation uses curly braces in our path (path = “/items{id}”), this indicates a variable for our @PathVariable annotation. Path variables are variables in the URL. In this case we want to delete the item with the ID we pass in the curly braces by using the method deleteById() provided by JpaRepository.
+-   **@CrossOrigin**: You do not have to worry about this annotation yet as we use it for Part 2 of this tutorial. But we use it to get our front-end React domain to be able to request the method.
+-   **@RequestBody**: Maps the HTTP request body to a domain object, essentially our Java entity object. The RequestBody is usually in JSON format and contains the data that can be updated or stored.
+-   **@GetMapping**: We use this for our GET request to get all the items from our MySQL database. Here we create a new ArrayList in which we store every item from our database by using the findAll() method provided by JpaRepository. The path is set to ‘/items’, when the user request for a GET on http://localhost:8080/items (in my case http://localhost:8181/items, because I set my port to 8181 in the application.properties files) they get back an ArrayList of all our items.
+-   **@PostMapping**: We are using the PostMapping annotation for our POST request to be able to save a new item to our database. Here we use the RequestBody annotation so that we can save the data we entered in using the method save() provided by JpaRepository.
+-   **@DeleteMapping**: Our DeleteMapping annotation uses curly braces in our path (path = “/items{id}”), this indicates a variable for our @PathVariable annotation. Path variables are variables in the URL. In this case we want to delete the item with the ID we pass in the curly braces by using the method deleteById() provided by JpaRepository.
+
+https://medium.com/@falkohussain/basic-rest-api-application-using-spring-boot-react-and-mysql-part-i-the-back-end-e79028f8a67b
 
 ## setting up spring security
 
@@ -46,21 +46,13 @@ references:
 
 -   https://stackoverflow.com/a/630475/7460613
 
-#### POST
-
-Use a `POST`
-
-#### PUT
-
-this is used for
-
 The PUT method completely replaces whatever currently exists at the target URL with something else. With this method, you can create a new resource or overwrite an existing one given you know the exact Request-URI. An example of a PUT method being used to create a new resource would resemble the following:
 
-PUT /forums/<new_thread> HTTP/2.0
+`PUT /forums/<new_thread> HTTP/2.0`
 Host: https://yourwebsite.com/
 Where <new_thread> would be the actual name or ID number of the thread. Alternatively, a PUT method used to overwrite an existing resource could look like this:
 
-PUT /forums/<existing_thread> HTTP/2.0
+`PUT /forums/<existing_thread> HTTP/2.0`
 Host: https://yourwebsite.com/
 In short, the PUT method is used to create or overwrite a resource at a particular URL that is known by the client.
 
